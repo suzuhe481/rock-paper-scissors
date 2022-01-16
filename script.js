@@ -51,6 +51,9 @@ function computerPlay() {
 
 // Plays a round of rock, paper, scissors. Increments appropriate win counter.
 function playRound(event /* playerSelection , computerSelection */) {
+    // Removes previous player/computer selection icon.
+    const selections = document.querySelectorAll("#choice-container p");
+    selections.forEach(selection => selection.style.display = "none");
 
     // Gets the value of the button from the alt of the element of the event.
     // Was unable to get "value" from element so used "alt" instead.
@@ -59,7 +62,15 @@ function playRound(event /* playerSelection , computerSelection */) {
     // This was variable when I used buttons instead of input images.
     // const playerSelection = event.explicitOriginalTarget.value;
 
+
     const computerSelection = computerPlay();
+
+
+    // Displays an icon above player's choice and below computer's choice.
+    const playerIcon = "player-" + playerSelection + "-sel";
+    const compIcon = "computer-" + computerSelection + "-sel";
+    document.getElementById(playerIcon).style.display = "block";
+    document.getElementById(compIcon).style.display = "block";
 
     roundNumber++;
 
@@ -76,6 +87,8 @@ function determineRoundWinner(playerSelection, computerSelection) {
     let results;
     if (playerSelection == computerSelection) {
         results = "It's a tie. You both picked " + playerSelection + ".";
+
+        updatePlayerScores("tie");
         
         // console.log(results); // Debug
     }
@@ -107,14 +120,23 @@ function printSingleRoundResult(results) {
     const resultDisplay = document.querySelector("#round-results");
     const roundResults = document.createElement("p");
 
+    const children = document.querySelectorAll("#round-results p");
+    children.forEach(child => child.style.fontWeight = "normal");
+
+
     roundResults.textContent += "Round " + roundNumber + ": ";
     roundResults.textContent += results;
+    roundResults.style.fontWeight = "bold";
 
     resultDisplay.appendChild(roundResults);
 }
 
 // Updates score counts after each round.
+// Updates round counter.
 function updatePlayerScores(winner) {
+    const roundCount = document.querySelector("#round-counter-container");
+    roundCount.textContent = "Round #" + roundNumber;
+
     if (winner == "player"){
         const playerScore = document.querySelector("#player-score-container");
         // const score = document.createElement("p");
@@ -127,6 +149,7 @@ function updatePlayerScores(winner) {
         
         computerScore.textContent = "Computer Score: " + computerWinCount;
     }
+    
 }
 
 // Prints final results.

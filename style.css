@@ -1,4 +1,4 @@
-#choice-container2 {
+#choice-container {
     display: flex;
     justify-content: center;
 }
@@ -9,4 +9,18 @@ img {
     border: 5px solid grey;
     border-radius: 100px;
     margin: 50px;
+}
+
+#rock-container,
+#paper-container,
+#scissors-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#choice-container p {
+    text-align: center;
+    display: none;
+    font-weight: inherit;
 }
