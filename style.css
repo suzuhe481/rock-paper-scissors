@@ -1,6 +1,8 @@
 #choice-container {
     display: flex;
     justify-content: center;
+    background-color: blanchedalmond;
+    visibility: hidden;
 }
 
 img {
@@ -21,6 +23,28 @@ img {
 
 #choice-container p {
     text-align: center;
-    display: none;
     font-weight: inherit;
+    visibility: hidden;
+}
+
+img:hover {
+    border-color: yellow;
+}
+
+#running-score {
+    text-align: center;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#reset-button {
+    display: none;
+}
+#game-winner,
+#round-results {
+    text-align: center;
 }

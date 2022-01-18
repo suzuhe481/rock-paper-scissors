@@ -53,7 +53,7 @@ function computerPlay() {
 function playRound(event /* playerSelection , computerSelection */) {
     // Removes previous player/computer selection icon.
     const selections = document.querySelectorAll("#choice-container p");
-    selections.forEach(selection => selection.style.display = "none");
+    selections.forEach(selection => selection.style.visibility = "hidden");
 
     // Gets the value of the button from the alt of the element of the event.
     // Was unable to get "value" from element so used "alt" instead.
@@ -69,8 +69,8 @@ function playRound(event /* playerSelection , computerSelection */) {
     // Displays an icon above player's choice and below computer's choice.
     const playerIcon = "player-" + playerSelection + "-sel";
     const compIcon = "computer-" + computerSelection + "-sel";
-    document.getElementById(playerIcon).style.display = "block";
-    document.getElementById(compIcon).style.display = "block";
+    document.getElementById(playerIcon).style.visibility = "visible";
+    document.getElementById(compIcon).style.visibility = "visible";
 
     roundNumber++;
 
@@ -240,6 +240,9 @@ function startGame() {
     // Shows reset button.
     const resetButton = document.getElementById("reset-button");
     resetButton.style.display = "block";
+
+    const choiceContainer = document.getElementById("choice-container");
+    choiceContainer.style.visibility = "visible";
 }
 
 // Removes all scores and results.
@@ -253,17 +256,24 @@ function resetGame() {
     const roundResults = document.querySelector("#round-results");
     roundResults.textContent = "";
 
+    // Hides player and computer selections
+    const selections = document.querySelectorAll("#choice-container p");
+    selections.forEach(selection => selection.style.visibility = "hidden");
+
     // Reseting counters.
     playerWinCount = 0;     // Player win counter
     computerWinCount = 0;   // Computer win counter
     roundNumber = 0;        // Round number counter
 
-    // Resetting player and computer scores.
+    // Resetting player/computer scores and round number.
     const playerScore = document.querySelector("#player-score-container");   
     playerScore.textContent = "Player Score: " + playerWinCount;
 
     const computerScore = document.querySelector("#computer-score-container");        
     computerScore.textContent = "Computer Score: " + computerWinCount;
+
+    const roundCount = document.querySelector("#round-counter-container");
+    roundCount.textContent = "Round #";
 
 
     // Adds event listeners.

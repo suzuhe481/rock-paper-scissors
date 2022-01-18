@@ -15,26 +15,31 @@
         <p id="player-score-container">Player Score: 0<p>
         <p id=computer-score-container>Computer Score: 0</p>
     </div>
+    
+    <div id="button-container">
+        <button id="start-game" onclick="startGame()">Start Game</button>
+        <button id="reset-button" onclick="resetGame()">Reset Game</button>
+    </div>
+    
 
     <div id="choice-container">
         <div id="rock-container">
-            <p id="player-rock-sel">Player</p>
+            <p id="player-rock-sel" class="selections">Player</p>
             <img id="rock-choice" class="button" value="rock" alt="rock" src="">
-            <p id="computer-rock-sel">Computer</p>
+            <p id="computer-rock-sel" class="selections">Computer</p>
         </div>
         <div id="paper-container">
-            <p id="player-paper-sel">Player</p>
+            <p id="player-paper-sel" class="selections">Player</p>
             <img id="paper-choice" class="button" value="paper" alt="paper" src="">
-            <p id="computer-paper-sel">Computer</p>
+            <p id="computer-paper-sel" class="selections">Computer</p>
         </div>
         <div id="scissors-container">
-            <p id="player-scissors-sel">Player</p>
+            <p id="player-scissors-sel" class="selections">Player</p>
             <img id="scissors-choice" class="button" value="scissors" alt="scissors" src="">
-            <p id="computer-scissors-sel">Computer</p>
+            <p id="computer-scissors-sel" class="selections">Computer</p>
         </div>
     </div>
-    <button id="start-game" onclick="startGame()">Start Game</button>
-    <button id="reset-button" onclick="resetGame()">Reset Game</button>
+    
     <div id="game-winner"></div>
     <div id="round-results">
     </div>
